@@ -1,0 +1,60 @@
+<!--
+  부품: 정의 · 사료 · 정리 (역할 칸: 정의 · 사료 · 정리)
+  출처: 정의 카드 = pre 01:46 (흰 카드, 역할 색 테두리 6px, 둥근 40px, 위 가운데 역할 색 알약 "○○이란?",
+        가운데 정렬 남색 굵은 글, 마지막 줄 핵심어만 역할 색, 가는 구분선 아래 보조 줄)
+        정리 띠 = pre 01:26 (흰 알약, 주황 테두리 6px, 높이 140px, "설명 → 용어" 마지막 용어만 주황)
+  바꾸는 부분: data-role, .def-tag 글, .def-text 글과 <em> 한 군데, .def-source 쪽수 / .sum-bar 글과 <em> 한 군데
+  건드리지 않는 것: 카드 모양, 글 가운데 정렬, 강조 한 군데, 출처 자리(카드 아래 가운데)
+  따로 움직일 수 있는 조각: .def-card, .def-tag, .def-text 줄마다(.line), .def-source / .sum-bar, .sum-bar em
+  글자 크기: 머리 text-sub(pre 01:46 ≈37px 글자 높이) · 본문 text-body 줄 간격 1.25(pre 01:46 줄 간격 60px) · 정리 띠 text-title(pre 01:26 ≈45px)
+  가운데 정렬은 transform 없이 한다 (HyperFrames 계약 6).
+-->
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .def-card { position: absolute; left: 0; right: 0; top: 110px; margin: 0 auto; width: 1080px; box-sizing: border-box;
+    background: var(--color-card); border: var(--border) solid var(--c); border-radius: var(--radius-card); box-shadow: var(--shadow);
+    padding: 44px 64px 40px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .def-card[data-role="green"]  { --c: var(--role-green); }
+  .def-card[data-role="blue"]   { --c: var(--role-blue); }
+  .def-card[data-role="orange"] { --c: var(--role-orange); }
+  .def-card[data-role="purple"] { --c: var(--role-purple); }
+  .def-tag { height: var(--pill-h-verdict); padding: 0 44px; background: var(--c); color: #fff; font-size: var(--text-sub); box-shadow: none; }
+  .def-text { margin: 32px 0 0; font-size: var(--text-body); font-weight: 700; line-height: 1.25; color: var(--color-ink); }
+  .def-text .line { display: block; }
+  .def-text em { font-style: normal; color: var(--c); }
+  .def-rule { width: 100%; height: 3px; background: #E8E1D6; margin: 30px 0 22px; }
+  .def-source { font-size: var(--text-source); font-weight: 600; color: var(--color-ink-soft); }
+
+  .sum-bar { position: absolute; left: 0; right: 0; bottom: 70px; margin: 0 auto; width: fit-content; height: 140px; padding: 0 90px;
+    background: var(--color-card); border: var(--border) solid var(--color-accent); color: var(--color-ink); font-size: var(--text-title); }
+  .sum-bar em { font-style: normal; color: var(--color-accent); margin-left: .3em; }
+</style>
+</head>
+<body>
+<div class="stage" style="background: var(--color-bg-cream);">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,var(--dot-cream) 2.5px,transparent 3px);background-size:60px 60px;background-position:30px 30px;"></div>
+
+  <!-- ▼ 부품 본체 A: 정의 카드 -->
+  <div class="def-card" data-role="green">
+    <div class="pill def-tag">견본 용어란?</div>
+    <p class="def-text">
+      <span class="line">교과서의 정의 문장을</span>
+      <span class="line">두세 줄로 나눠 가운데에 쓰고</span>
+      <span class="line"><em>핵심어 한 군데</em>만 칠해요</span>
+    </p>
+    <div class="def-rule"></div>
+    <span class="def-source">견본 · p.00</span>
+  </div>
+  <!-- ▲ 부품 본체 A -->
+
+  <!-- ▼ 부품 본체 B: 정리 띠 -->
+  <div class="pill sum-bar">설명을 한 줄로 줄인 견본 문장 →<em>용어</em></div>
+  <!-- ▲ 부품 본체 B -->
+
+</div>
+</body>
+</html>

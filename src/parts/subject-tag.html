@@ -1,0 +1,33 @@
+<!--
+  부품: 과목 · 단원 (역할 칸: 과목 · 단원) — 영상 내내 같은 자리
+  출처: 모양 = pre 00:04 노란 학년 알약 ("4학년 과학 · 2. 생물과 환경": 노랑 #FED13F, 남색 글자, 36px급, 가운뎃점으로 구분)
+  자리: 레퍼런스에는 영상 내내 떠 있는 라벨이 없다. 장면 제목 알약(왼쪽 위)과 겹치지 않게 **오른쪽 위**로 제안한 값이다.
+        → 바꾸고 싶으면 docs/video.md에서 정한다.
+  바꾸는 부분: .tag-grade(학년 과목), .tag-unit(단원)
+  건드리지 않는 것: 자리(오른쪽 위 safe 여백), 크기(높이 64px · text-sub 40px 글자, pre 00:04 키커와 같음), 색
+  따로 움직일 수 있는 조각: .subject-tag 하나 (첫 장면에서 한 번 들어오고 그다음은 고정)
+-->
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .subject-tag { position: absolute; right: var(--safe-x); top: var(--safe-y); height: var(--pill-h-label); padding: 0 32px; gap: 14px;
+    background: var(--color-highlight); color: var(--color-ink); font-size: var(--text-sub); }
+  .subject-tag .dot { opacity: .7; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,var(--dot-sky) 2.5px,transparent 3px);background-size:60px 60px;background-position:30px 30px;"></div>
+  <!-- 자리 확인용: 왼쪽 위 장면 제목 알약 -->
+  <div class="pill" style="position:absolute;left:var(--safe-x);top:var(--safe-y);height:80px;padding:0 44px;background:var(--color-ink);color:#fff;font-size:var(--text-title);">견본 · 장면 제목</div>
+
+  <!-- ▼ 부품 본체 -->
+  <div class="pill subject-tag"><span class="tag-grade">4학년 과학</span><span class="dot">·</span><span class="tag-unit">3. 여러 가지 기체</span></div>
+  <!-- ▲ 부품 본체 -->
+
+</div>
+</body>
+</html>

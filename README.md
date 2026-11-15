@@ -35,7 +35,7 @@
 3. **룩:** (레퍼런스를 `references/<이름>/`에 넣고) `references/<이름>을 분석해서 templates/look/의 양식대로 docs/design.md와 src/parts/ 부품을 만들어줘. 값마다 레퍼런스 어디서 왔는지 적고, 레퍼런스의 사진 · 글자 · 로고는 가져오지 마. 부품은 견본 글로 한 장씩 찍어서 보여줘.`
 4. **움직임:** `references/<이름>의 영상을 재서 docs/motion.md를 만들어줘. 먼저 움직임 성격 후보 3개를 주고 고르게 해줘. 장: 1 Primitives · 2 Semantic · 3 Pattern(부품별) · 4 머무는 시간 · 5 카메라. 값마다 몇 초에서 잰 값인지 적어줘.`
 5. **화면 규칙:** `docs/video.md를 만들어줘. 교실 TV 기준이야. 배경 밝기 / 글자 크기 느낌 / 마지막 정리 화면, 세 가지만 기본값과 함께 물어봐.`
-6. **하네스:** `수업 영상 하네스를 만들어줘. CLAUDE.md(목적 · 규칙 3개 · 폴더 · 고정/참조/금지 · 순서), .claude/agents 5명(content-editor · art-director · director · builder · critic), .claude/skills/make-video(브리프 → 교과서 정리 ✋ → 레퍼런스 → 장면표 ✋ → 스냅보드 ✋ → 생성 · 검수 → 렌더 → 규칙). 룩과 움직임은 docs와 references에서만 가져오고, 문서에 없는 값은 지어내지 말고 물어보게 해줘.`
+6. **하네스:** `수업 영상 하네스를 만들어줘. CLAUDE.md(목적 · 규칙 3개 · 폴더 · 고정/참조/금지 · 순서), .claude/agents 5명(content-editor · art-director · director · builder · critic), .claude/skills/make-video(브리프 → 교과서 정리 → 영상에 쓸 부분 확인 ✋ → 레퍼런스 → 장면표 ✋ → 스냅보드 ✋ → 생성 · 검수 → 렌더 → 규칙). 룩과 움직임은 docs와 references에서만 가져오고, 문서에 없는 값은 지어내지 말고 물어보게 해줘.`
 7. **점검:** `하네스를 점검해줘. 문서끼리 다른 값이나 규칙이 있으면 찾아서 알려주고 고치지는 마.`
 
 그다음부터는 `수업 영상 만들자` 한 줄로 시작합니다.

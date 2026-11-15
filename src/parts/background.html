@@ -1,0 +1,63 @@
+<!--
+  부품: 바탕 (역할 칸: 바탕)
+  출처: 점 격자판 pre 00:32(크림) · 00:42(하늘색) · 02:20(연두) / 들판 pre 00:04 (하늘 · 언덕 · 풀밭 · 흙 띠 색만)
+  바꾸는 부분: data-variant = "dots-sky"(기본) | "dots-cream" | "dots-mint" | "field"
+  건드리지 않는 것: 크기 2112×1188 (영상보다 10% 큼, 카메라가 움직여도 가장자리 안 보임), 점 간격 60px, 색 토큰
+  따로 움직일 수 있는 조각: .bg-sky · .bg-hill · .bg-grass · .bg-soil (들판일 때 층마다 따로 밀기 가능), .bg-dots
+  레퍼런스의 구름 · 해 · 나무 · 논 · 연못 그림은 넣지 않는다.
+-->
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .bg { position: absolute; left: -96px; top: -54px; width: 2112px; height: 1188px; overflow: hidden; }
+  .bg-dots { position: absolute; inset: 0;
+    background-image: radial-gradient(circle, var(--dot) calc(var(--grid-dot) / 2), transparent calc(var(--grid-dot) / 2 + .5px));
+    background-size: var(--grid-gap) var(--grid-gap); background-position: 30px 30px; }
+  .bg[data-variant="dots-sky"]   { background: var(--color-bg);       --dot: var(--dot-sky); }
+  .bg[data-variant="dots-cream"] { background: var(--color-bg-cream); --dot: var(--dot-cream); }
+  .bg[data-variant="dots-mint"]  { background: var(--color-bg-mint);  --dot: var(--dot-mint); }
+  .bg[data-variant="field"] .bg-dots { display: none; }
+  .bg:not([data-variant="field"]) .bg-field { display: none; }
+  .bg-field { position: absolute; inset: 0; }
+  .bg-field > * { position: absolute; left: 0; width: 100%; }
+  .bg-sky   { top: 0; height: 100%; background: linear-gradient(180deg, var(--field-sky-top) 0%, var(--field-sky-low) 52%); }
+  .bg-hill  { top: 520px; height: 300px; }
+  .bg-grass { top: 640px; height: 548px; }
+  .bg-soil  { bottom: 0; height: 110px; background: var(--field-soil); }
+
+  /* 미리보기 전용 견본 칸 */
+  .swatches { position: absolute; right: 60px; top: 60px; display: flex; gap: 28px; }
+  .swatch { position: relative; width: 300px; height: 190px; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); }
+  .swatch .bg { left: 0; top: 0; width: 100%; height: 100%; }
+  .swatch span { position: absolute; left: 16px; bottom: 12px; font-size: 28px; font-weight: 700; color: var(--color-ink); }
+  .caption { position: absolute; left: 60px; top: 70px; font-size: var(--text-label); font-weight: 700; color: var(--color-ink);
+    background: var(--color-card); padding: 10px 28px; border-radius: var(--radius-pill); box-shadow: var(--shadow); }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <!-- ▼ 부품 본체 -->
+  <div class="bg" data-variant="field">
+    <div class="bg-dots"></div>
+    <div class="bg-field">
+      <div class="bg-sky"></div>
+      <svg class="bg-hill" viewBox="0 0 2112 300" preserveAspectRatio="none"><path d="M0 120 C 420 40, 820 60, 1180 110 S 1860 60, 2112 90 L 2112 300 L 0 300 Z" fill="var(--field-hill)"/></svg>
+      <svg class="bg-grass" viewBox="0 0 2112 548" preserveAspectRatio="none"><path d="M0 40 C 520 0, 1300 10, 2112 30 L 2112 548 L 0 548 Z" fill="var(--field-grass)"/></svg>
+      <div class="bg-soil"></div>
+    </div>
+  </div>
+  <!-- ▲ 부품 본체 -->
+
+  <div class="caption">바탕 · field</div>
+  <div class="swatches">
+    <div class="swatch"><div class="bg" data-variant="dots-sky"><div class="bg-dots"></div><div class="bg-field"></div></div><span>dots-sky</span></div>
+    <div class="swatch"><div class="bg" data-variant="dots-cream"><div class="bg-dots"></div><div class="bg-field"></div></div><span>dots-cream</span></div>
+    <div class="swatch"><div class="bg" data-variant="dots-mint"><div class="bg-dots"></div><div class="bg-field"></div></div><span>dots-mint</span></div>
+  </div>
+</div>
+</body>
+</html>

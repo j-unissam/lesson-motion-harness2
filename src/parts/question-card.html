@@ -1,0 +1,36 @@
+<!--
+  부품: 질문 상자 (덧붙인 부품 — 교과서 질문 문장)
+  출처: 레퍼런스 질문 상자 pre 01:04 (흰 바탕 + 테두리)의 모양, 색은 선생님이 정함:
+        role-purple 테두리 border 6px (레퍼런스는 파랑이지만 파랑은 "차가움"에 써서 보라로, 2026-11-15)
+        radius-card 40px · shadow · 안 여백 36 / 48 / 44px · 문장 text-body 48px Bold color-ink, 질문 끝말만 보라 글자
+  바꾸는 부분: 문장, 보라로 칠할 끝말 <em>, 쪽수, 너비
+  건드리지 않는 것: 테두리 색 · 굵기, 모서리, 글자 토큰
+  따로 움직일 수 있는 조각: .q-card 하나 (pop-in으로 통째로)
+-->
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .q-card { position: absolute; box-sizing: border-box; background: var(--color-card); border: var(--border) solid var(--role-purple);
+    border-radius: var(--radius-card); box-shadow: var(--shadow); padding: 36px 48px 44px; }
+  .q-card .sentence { margin: 0; font-size: var(--text-body); font-weight: 700; line-height: 1.45; color: var(--color-ink); }
+  .q-card em { font-style: normal; color: var(--role-purple-text); }
+  .q-card .source { display: block; margin-top: 16px; font-size: var(--text-source); font-weight: 600; color: var(--color-ink-soft); }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,var(--dot-sky) 2.5px,transparent 3px);background-size:60px 60px;background-position:30px 30px;"></div>
+
+  <!-- ▼ 부품 본체 -->
+  <div class="q-card" style="left:var(--safe-x);top:184px;width:1300px">
+    <p class="sentence">견본 · 교과서 질문 문장이 들어가는 <em>자리일까요?</em></p>
+    <span class="source">견본 · p.00</span>
+  </div>
+  <!-- ▲ 부품 본체 -->
+
+</div>
+</body>
+</html>

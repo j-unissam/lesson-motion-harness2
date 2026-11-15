@@ -1,0 +1,40 @@
+<!--
+  부품: 첫 제목 카드 (역할 칸: 제목 + 강조 문장 — 영상 첫 장면용)
+  출처: pre 00:04 제목 카드 — 흰 카드(둥근 40px, 아래 그림자), 위 노란 키커 알약(4학년 과학 · 단원),
+        가운데 큰 제목(남색, Black), 아래 회색 부제(가운뎃점으로 이은 낱말)
+        카드 크기 ≈1120×390px, 화면 가로 가운데 · 세로 가운데보다 조금 위 (pre 00:04 카드 y 270–658)
+  바꾸는 부분: .tc-kicker(학년 과목 · 단원), .tc-title(영상 제목), .tc-sub(다룰 낱말, 가운뎃점으로 구분)
+  건드리지 않는 것: 카드 모양 · 크기 비율, 글자 크기(display · sub · label 토큰), 색
+  따로 움직일 수 있는 조각: .title-card 하나 (pop-in으로 통째로 들어오고 pop-out으로 나감, motion.md 3장)
+  가운데 정렬은 transform 없이 한다 (HyperFrames 계약 6: GSAP이 이 요소의 transform을 쓴다).
+-->
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .title-card { position: absolute; left: 0; right: 0; top: 270px; margin: 0 auto; width: 1120px; box-sizing: border-box;
+    background: var(--color-card); border-radius: var(--radius-card); box-shadow: var(--shadow);
+    padding: 42px 60px 48px; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; }
+  .tc-kicker { height: var(--pill-h-label); padding: 0 40px; background: var(--color-highlight); color: var(--color-ink);
+    font-size: var(--text-sub); box-shadow: none; }
+  .tc-title { margin: 0; font-size: var(--text-display); font-weight: var(--weight-display); line-height: 1.1; letter-spacing: -0.01em; color: var(--color-ink); }
+  .tc-sub { font-size: var(--text-label); font-weight: 700; color: var(--color-ink-soft); }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,var(--dot-sky) 2.5px,transparent 3px);background-size:60px 60px;background-position:30px 30px;"></div>
+
+  <!-- ▼ 부품 본체 -->
+  <div class="title-card">
+    <div class="pill tc-kicker">견본 · 4학년 과학 · 3. 단원</div>
+    <h1 class="tc-title">견본 영상 제목</h1>
+    <div class="tc-sub">낱말 하나 · 낱말 둘 · 낱말 셋 · 낱말 넷</div>
+  </div>
+  <!-- ▲ 부품 본체 -->
+
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!--
+  부품: 자료 + 이름 (역할 칸: 자료 + 이름)
+  출처: 분류 카드 = pre 00:32 (색 머리 110px · 흰 글자 큰 제목 + 작은 설명, 옅은 역할 색 속, 테두리 6px, 둥근 32px)
+        그림 + 이름 = pre 00:32 (그림 아래 역할 색 진한 글자 이름)
+  바꾸는 부분: data-role(green|blue|orange|purple), .fig-head 제목 · 작은 설명, .fig-item 그림과 이름, .fig-source 출처
+  건드리지 않는 것: 머리 높이 · 카드 모양 · 이름은 그림 바로 아래 · 출처 자리(오른쪽 아래)
+  따로 움직일 수 있는 조각: .fig-card, .fig-head, .fig-item (하나씩 들어오기), .fig-source
+  그림은 .figure-slot 자리에 우리가 만든 평면 그림을 넣는다. 레퍼런스 그림은 쓰지 않는다.
+-->
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .fig-card { position: absolute; top: 300px; width: 820px; height: 710px; box-sizing: border-box;
+    border: var(--border) solid var(--c); border-radius: var(--radius-box); background: var(--tint);
+    box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; }
+  .fig-card[data-role="green"]  { --c: var(--role-green-head);--tint: var(--role-green-tint);  --t: var(--role-green-text); }
+  .fig-card[data-role="blue"]   { --c: var(--role-blue);   --tint: var(--role-blue-tint);   --t: var(--role-blue-text); }
+  .fig-card[data-role="orange"] { --c: var(--role-orange); --tint: var(--role-orange-tint); --t: var(--role-orange-text); }
+  .fig-card[data-role="purple"] { --c: var(--role-purple); --tint: var(--role-purple-tint); --t: var(--role-purple-text); }
+  .fig-head { height: 110px; flex: none; background: var(--c); color: #fff; display: flex; align-items: center; justify-content: center; gap: 16px; }
+  .fig-head b { font-size: var(--text-title); font-weight: 700; }
+  .fig-head small { font-size: var(--text-label); font-weight: 600; }
+  .fig-body { flex: 1; display: flex; flex-wrap: wrap; align-content: flex-start; justify-content: space-around; gap: 30px 20px; padding: 60px 40px 0; }
+  .fig-item { width: 220px; display: flex; flex-direction: column; align-items: center; gap: 14px; color: var(--t); }
+  .fig-item .figure-slot { width: 170px; height: 170px; }
+  .fig-name { font-size: var(--text-sub); font-weight: 700; color: var(--t); } /* pre 00:32 이름 글자 높이 ≈35px */
+  .fig-source { position: absolute; right: 26px; bottom: 18px; font-size: var(--text-source); font-weight: 600; color: var(--color-ink-soft); }
+</style>
+</head>
+<body>
+<div class="stage" style="background: var(--color-bg-cream);">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,var(--dot-cream) 2.5px,transparent 3px);background-size:60px 60px;background-position:30px 30px;"></div>
+  <div class="pill" style="position:absolute;left:0;right:0;margin:0 auto;width:fit-content;top:var(--safe-y);height:80px;padding:0 44px;background:var(--color-ink);color:#fff;font-size:var(--text-title);">견본 · 두 묶음으로 나눠요</div>
+
+  <!-- ▼ 부품 본체 (카드 하나 = 부품 하나, 여기서는 두 장을 나란히 놓은 견본) -->
+  <div class="fig-card" data-role="green" style="left: 112px;">
+    <div class="fig-head"><b>견본 묶음 A</b><small>설명 한 줄</small></div>
+    <div class="fig-body">
+      <div class="fig-item"><div class="figure-slot">그림 자리</div><span class="fig-name">이름 하나</span></div>
+      <div class="fig-item"><div class="figure-slot">그림 자리</div><span class="fig-name">이름 둘</span></div>
+      <div class="fig-item"><div class="figure-slot">그림 자리</div><span class="fig-name">이름 셋</span></div>
+    </div>
+    <span class="fig-source">견본 · p.00</span>
+  </div>
+  <div class="fig-card" data-role="blue" style="left: 988px;">
+    <div class="fig-head"><b>견본 묶음 B</b><small>설명 한 줄</small></div>
+    <div class="fig-body">
+      <div class="fig-item"><div class="figure-slot">그림 자리</div><span class="fig-name">이름 넷</span></div>
+      <div class="fig-item"><div class="figure-slot">그림 자리</div><span class="fig-name">이름 다섯</span></div>
+    </div>
+    <span class="fig-source">견본 · p.00</span>
+  </div>
+  <!-- ▲ 부품 본체 -->
+
+</div>
+</body>
+</html>

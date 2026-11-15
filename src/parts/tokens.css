@@ -1,0 +1,97 @@
+/* tokens.css — docs/design.md 값을 CSS 변수로 옮긴 것. 값을 바꿀 때는 design.md와 같이 바꾼다. */
+
+@font-face { font-family: "Pretendard"; font-weight: 400; src: url("../assets/fonts/Pretendard-Regular.woff2") format("woff2"); }
+@font-face { font-family: "Pretendard"; font-weight: 600; src: url("../assets/fonts/Pretendard-SemiBold.woff2") format("woff2"); }
+@font-face { font-family: "Pretendard"; font-weight: 700; src: url("../assets/fonts/Pretendard-Bold.woff2") format("woff2"); }
+@font-face { font-family: "Pretendard"; font-weight: 900; src: url("../assets/fonts/Pretendard-Black.woff2") format("woff2"); }
+
+:root {
+  /* 1. 색 — 기본 */
+  --color-bg: #EFF7FE;
+  --color-bg-cream: #FEF7E7;
+  --color-bg-mint: #EDF8EB;
+  --color-card: #FFFFFF;
+  --color-ink: #1D395D;
+  --color-ink-soft: #4F6074;
+  --color-accent: #EF7A2C;
+  --color-highlight: #FED13F;
+
+  /* 1. 색 — 역할 */
+  --role-green: #3EAD4F;   --role-green-tint: #E7F4E4;   --role-green-text: #1A6B3B;
+  --role-green-head: #2DA158; /* 분류 카드 머리 · 테두리만 (pre 00:32) */
+  --role-orange: #EF7A2C;  --role-orange-tint: #FFEFE0;  --role-orange-text: #EF7A2C;
+  --role-purple: #9961C8;  --role-purple-tint: #F2E8FA;  --role-purple-text: #9961C8;
+  --role-blue: #2F85C8;    --role-blue-tint: #E3EEFB;    --role-blue-text: #1A5B93;
+  --role-red: #DF5C62;
+  --line-grey: #798A9E;
+
+  /* 1. 색 — 들판 */
+  --field-sky-top: #8ED3EE;
+  --field-sky-low: #C1E7F6;
+  --field-hill: #B5DC92;
+  --field-grass: #8CCB5D;
+  --field-soil: #895C39;
+
+  /* 1. 색 — 그림(일러스트) 색: 그림 안에서만 (pre 00:34에서 잰 값, 2026-11-15 선생님 확인) */
+  --illo-yellow: #FED74B;   --illo-yellow-hi: #F7F0AA;  --illo-amber: #FFB425;
+  --illo-water: #55AEE0;    --illo-water-dark: #389CD5; --illo-water-hi: #C2E9FF;
+  --illo-air: #77C7EA;      --illo-red: #F55562;        --illo-tomato: #D5532D;
+  --illo-line: #5F6A77;     --illo-brown: #A9714B;      --illo-brown-hi: #C6A177;
+  --illo-green: #6DBF4B;    --illo-green-dark: #55AB38; --illo-green-hi: #C7EB98;
+  --illo-cream: #F5E8D3;    --illo-shadow: #C1C0A7;
+
+  /* 점 격자 */
+  --dot-sky: #D9E8F8;
+  --dot-cream: #F7E2C7;
+  --dot-mint: #D6EFD2;
+
+  /* 2. 글자 */
+  --font: "Pretendard", "Noto Sans KR", sans-serif;
+  --text-display: 120px;
+  --weight-display: 900; /* 큰 제목 · 큰 숫자만 Black (pre 00:04) */
+  --text-title: 52px;
+  --text-body: 48px;
+  --text-sub: 40px;    /* 알약 머리 · 키커 · 그림 이름 (pre 00:04 · 00:32 · 01:46) */
+  --text-label: 36px;
+  --text-source: 32px; /* 쪽수 · 출처만 (video.md 2장) */
+
+  /* 4. 크기 · 간격 */
+  --safe-x: 96px;  /* 화면 90% 안쪽 (HyperFrames action-safe) */
+  --safe-y: 54px;
+  --radius-card: 40px;
+  --radius-box: 32px;
+  --radius-pill: 999px;
+  --border: 6px;
+  --shadow: 0 8px 0 rgba(29, 57, 93, .15);
+  --gap: 56px;
+  --pill-h-title: 80px;
+  --pill-h-verdict: 72px; /* pre 01:04 생산자 알약 높이 ≈70px */
+  --pill-h-label: 64px;
+  --grid-dot: 5px;
+  --grid-gap: 60px;
+  --bubble-tail-w: 48px; /* 말풍선 꼬리 밑변 (선생님 확인 2026-11-15) */
+  --bubble-tail-h: 32px; /* 말풍선 꼬리 높이 */
+}
+
+/* 미리보기용 무대 — 영상 한 장 크기 */
+html, body { margin: 0; padding: 0; }
+.stage {
+  position: relative; width: 1920px; height: 1080px; overflow: hidden;
+  font-family: var(--font); color: var(--color-ink);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 공용: 알약 */
+.pill {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-pill); box-shadow: var(--shadow);
+  font-weight: 700; white-space: nowrap;
+}
+
+/* 공용: 그림 자리 (실제 그림은 장면마다 넣는다) */
+.figure-slot {
+  display: flex; align-items: center; justify-content: center;
+  border: 4px dashed currentColor; border-radius: 28px; opacity: .55;
+  font-size: 28px; font-weight: 600;
+}

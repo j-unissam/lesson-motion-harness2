@@ -1,0 +1,37 @@
+<!--
+  부품: 말풍선 (덧붙인 부품 — 그림 속 캐릭터의 말)
+  출처: 레퍼런스에 말풍선 없음 → 선생님이 정한 값 (2026-11-15, gas-3-2-to-3-3)
+        몸통 = 흰 color-card · radius-box 32px · shadow · 글자 text-label 36px Bold color-ink · 안 여백 36 / 48 / 44px (title-sentence 문장 카드와 같음)
+        꼬리 = 삼각형 밑변 bubble-tail-w 48px · 높이 bubble-tail-h 32px, 몸통과 같은 흰색, 그림 쪽을 향함
+  바꾸는 부분: 글, data-tail = "left" | "right" (꼬리 자리), 쪽수
+  건드리지 않는 것: 모양 · 크기 토큰 · 색
+  따로 움직일 수 있는 조각: .bubble 하나 (pop-in으로 통째로)
+-->
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .bubble { position: absolute; background: var(--color-card); border-radius: var(--radius-box); box-shadow: var(--shadow);
+    padding: 36px 48px 44px; font-size: var(--text-label); font-weight: 700; color: var(--color-ink); white-space: nowrap; line-height: 1.2; }
+  .bubble::after { content: ""; position: absolute; bottom: calc(var(--bubble-tail-h) * -1); width: 0; height: 0;
+    border-left: calc(var(--bubble-tail-w) / 2) solid transparent; border-right: calc(var(--bubble-tail-w) / 2) solid transparent;
+    border-top: var(--bubble-tail-h) solid var(--color-card); }
+  .bubble[data-tail="left"]::after  { left: 64px; }
+  .bubble[data-tail="right"]::after { right: 64px; }
+  .bubble .source { display: block; margin-top: 8px; font-size: var(--text-source); font-weight: 600; color: var(--color-ink-soft); }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,var(--dot-sky) 2.5px,transparent 3px);background-size:60px 60px;background-position:30px 30px;"></div>
+
+  <!-- ▼ 부품 본체 (꼬리 왼쪽 · 오른쪽 견본) -->
+  <div class="bubble" data-tail="left" style="left:200px;top:300px">견본 · 캐릭터가 하는 말<span class="source">견본 · p.00</span></div>
+  <div class="bubble" data-tail="right" style="left:1000px;top:300px">견본 · 꼬리가 오른쪽</div>
+  <!-- ▲ 부품 본체 -->
+
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!--
+  부품: 장면 제목 + 강조 문장 (역할 칸: 제목 + 강조 문장)
+  출처: 장면 제목 알약 = pre 00:42 · 02:20 (왼쪽 위, 남색 #1D395D, 흰 글자 52px급, 높이 80px)
+        문장 카드 = pre 00:16 (흰 카드, 둥근 40px, 위 작은 초록 알약 + 굵은 남색 문장, 핵심 단어만 역할 색)
+  바꾸는 부분: .scene-title 글, .sentence-tag 글과 색(data-role), .sentence 글, 강조 단어 <em data-role="green|blue|orange|purple">
+  건드리지 않는 것: 알약 위치(왼쪽 위 safe 여백), 카드 모양, 강조는 한 문장에 한 군데(역할 색 글자)
+  따로 움직일 수 있는 조각: .scene-title, .sentence-card, .sentence-tag, .sentence em
+-->
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .scene-title { position: absolute; left: var(--safe-x); top: var(--safe-y);
+    height: var(--pill-h-title); padding: 0 44px; background: var(--color-ink); color: #fff; font-size: var(--text-title); }
+  .sentence-card { position: absolute; left: var(--safe-x); top: 184px; width: 1300px; box-sizing: border-box;
+    background: var(--color-card); border-radius: var(--radius-card); box-shadow: var(--shadow);
+    padding: 36px 48px 44px; }
+  .sentence-tag { height: var(--pill-h-label); padding: 0 30px; color: #fff; font-size: var(--text-sub); box-shadow: none; margin-bottom: 20px; }
+  .sentence-tag[data-role="green"]  { background: var(--role-green); }
+  .sentence-tag[data-role="blue"]   { background: var(--role-blue); }
+  .sentence-tag[data-role="orange"] { background: var(--role-orange); }
+  .sentence-tag[data-role="purple"] { background: var(--role-purple); }
+  .sentence { margin: 0; font-size: var(--text-body); font-weight: 700; line-height: 1.45; color: var(--color-ink); }
+  .sentence em { font-style: normal; }
+  .sentence em[data-role="green"]  { color: var(--role-green); }
+  .sentence em[data-role="blue"]   { color: var(--role-blue); }
+  .sentence em[data-role="orange"] { color: var(--role-orange); }
+  .sentence em[data-role="purple"] { color: var(--role-purple); }
+  .source { display: block; margin-top: 16px; font-size: var(--text-source); font-weight: 600; color: var(--color-ink-soft); }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,var(--dot-sky) 2.5px,transparent 3px);background-size:60px 60px;background-position:30px 30px;"></div>
+
+  <!-- ▼ 부품 본체 -->
+  <div class="pill scene-title">견본 · 장면 제목이 들어가는 자리</div>
+  <div class="sentence-card">
+    <div class="pill sentence-tag" data-role="green">견본 질문?</div>
+    <p class="sentence">교과서 문장 한 줄이 이 카드에 들어가고,<br>핵심 낱말 <em data-role="blue">한 군데</em>만 역할 색으로 칠해요.</p>
+    <span class="source">견본 · p.00</span>
+  </div>
+  <!-- ▲ 부품 본체 -->
+
+</div>
+</body>
+</html>

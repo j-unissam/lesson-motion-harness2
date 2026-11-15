@@ -1,0 +1,47 @@
+<!--
+  부품: 큰 수치 (역할 칸: 연도 · 시대)
+  과학 영상에서는 연도 대신 "약 5 kg", "30 mL" 같은 큰 수치에 쓴다.
+  출처: 숫자 · 단위 크기 · 색 · 굵기 = text-display 120px Black (pre 00:04 제목 글자) / "약 + 수치 + 단위" 짜임 = pre 01:09 "약 5 kg"(앞말만 작게)
+        부제 알약 = pre 00:04 노란 키커 알약 (text-sub) / 흰 카드 = pre 00:04 제목 카드
+  가운데 정렬은 transform 없이 한다 (HyperFrames 계약 6).
+  바꾸는 부분: .num-prefix(앞말, 없어도 됨) · .digit 한 자리씩 · .num-unit · .num-sub(부제 한 줄)
+  건드리지 않는 것: 카드 모양(흰 바탕 · 둥근 40px · 아래 그림자), 숫자 색, 부제 알약 색
+  따로 움직일 수 있는 조각: .digit (한 자리씩), .num-unit, .num-sub
+-->
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .big-number { position: absolute; inset: 0; margin: auto; width: fit-content; height: fit-content;
+    display: flex; flex-direction: column; align-items: center; gap: 28px;
+    background: var(--color-card); border-radius: var(--radius-card); box-shadow: var(--shadow);
+    padding: 56px 120px 64px; }
+  .num-sub { height: var(--pill-h-label); padding: 0 40px; background: var(--color-highlight); color: var(--color-ink);
+    font-size: var(--text-sub); box-shadow: none; }
+  .num-line { display: flex; align-items: baseline; gap: 18px; line-height: 1; }
+  .num-prefix { font-size: var(--text-title); font-weight: 700; color: var(--color-ink-soft); }
+  .num-digits { display: flex; font-size: var(--text-display); font-weight: var(--weight-display); letter-spacing: -0.01em; color: var(--color-ink); }
+  .digit { display: inline-block; }
+  .num-unit { font-size: var(--text-display); font-weight: var(--weight-display); color: var(--color-accent); }
+</style>
+</head>
+<body>
+<div class="stage" style="background: var(--color-bg-cream);">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,var(--dot-cream) 2.5px,transparent 3px);background-size:60px 60px;background-position:30px 30px;"></div>
+
+  <!-- ▼ 부품 본체 -->
+  <div class="big-number">
+    <div class="pill num-sub">견본 · 큰 방 안에 든 공기의 무게</div>
+    <div class="num-line">
+      <span class="num-prefix">약</span>
+      <span class="num-digits"><span class="digit">1</span><span class="digit">2</span></span>
+      <span class="num-unit">kg</span>
+    </div>
+  </div>
+  <!-- ▲ 부품 본체 -->
+
+</div>
+</body>
+</html>

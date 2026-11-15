@@ -1,0 +1,55 @@
+<!--
+  부품: 판정 · 강조 (역할 칸: 판정 · 강조)  — 짧은 말 한 개 (2~6글자)
+  출처: pre 01:04 역할 알약 "생산자 · 소비자 · 분해자"(초록 · 주황 · 보라, 흰 글자),
+        pre 01:04 "예"(초록) · "아니요"(빨강) 알약, pre 00:16 노란 띠(노랑 + 남색 글자)
+  바꾸는 부분: 글(2~6글자), data-role = green | orange | purple | blue | red | yellow, data-size = "lg"(기본) | "sm"
+  건드리지 않는 것: 완전한 알약 모양, 아래 그림자, 흰 글자(노랑만 남색 글자)
+  따로 움직일 수 있는 조각: .verdict 하나 (통째로 튀어나오기)
+-->
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .verdict { color: #fff; }
+  .verdict[data-size="lg"] { height: var(--pill-h-verdict); padding: 0 44px; font-size: var(--text-body); } /* pre 01:04 생산자 알약: 높이 ≈70px, 글자 높이 ≈40px */
+  .verdict[data-size="sm"] { height: var(--pill-h-label); padding: 0 32px; font-size: var(--text-label); }
+  .verdict[data-role="green"]  { background: var(--role-green); }
+  .verdict[data-role="orange"] { background: var(--role-orange); }
+  .verdict[data-role="purple"] { background: var(--role-purple); }
+  .verdict[data-role="blue"]   { background: var(--role-blue); }
+  .verdict[data-role="red"]    { background: var(--role-red); }
+  .verdict[data-role="yellow"] { background: var(--color-highlight); color: var(--color-ink); }
+
+  .row { position: absolute; left: 0; right: 0; display: flex; justify-content: center; gap: 48px; }
+  .note { position: absolute; left: var(--safe-x); top: var(--safe-y); font-size: var(--text-label); font-weight: 700; color: var(--color-ink-soft); }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle,var(--dot-sky) 2.5px,transparent 3px);background-size:60px 60px;background-position:30px 30px;"></div>
+  <div class="note">판정 · 강조 견본 (lg 72px · sm 64px)</div>
+
+  <!-- ▼ 부품 본체 (알약 하나 = 부품 하나, 색 · 크기 견본을 한 화면에 모음) -->
+  <div class="row" style="top: 260px;">
+    <div class="pill verdict" data-role="green"  data-size="lg">견본 하나</div>
+    <div class="pill verdict" data-role="orange" data-size="lg">견본 둘</div>
+    <div class="pill verdict" data-role="purple" data-size="lg">견본 셋</div>
+  </div>
+  <div class="row" style="top: 470px;">
+    <div class="pill verdict" data-role="blue"   data-size="lg">늘어나요</div>
+    <div class="pill verdict" data-role="red"    data-size="lg">아니요</div>
+    <div class="pill verdict" data-role="yellow" data-size="lg">줄어들어요!</div>
+  </div>
+  <div class="row" style="top: 700px;">
+    <div class="pill verdict" data-role="green"  data-size="sm">예</div>
+    <div class="pill verdict" data-role="red"    data-size="sm">아니요</div>
+    <div class="pill verdict" data-role="orange" data-size="sm">견본</div>
+    <div class="pill verdict" data-role="purple" data-size="sm">견본</div>
+  </div>
+  <!-- ▲ 부품 본체 -->
+
+</div>
+</body>
+</html>
